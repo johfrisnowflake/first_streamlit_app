@@ -4,9 +4,7 @@ import pandas
 import snowflake.connector
 from urllib.error import URLError
 
-
 streamlit.title('My Parents New Helthy Diner')
-
 streamlit.header('Breakfast Favorites')
 streamlit.text('🥣 Omega 3 & Blueberry Oatmeal')
 streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
@@ -26,11 +24,12 @@ fruit_to_show = my_fruit_list.loc[fruit_selected]
 # Display the table on the page.
 streamlit.dataframe(fruit_to_show)
 
+
 # New Section to display fruityvice api response
-streamlit.header("Fruityvice Fruit Advice!")
+streamlit.header('Fruityvice Fruit Advice!')
 try:
    fruit_choice = streamlit.text_input('What fruit would you like information about?')
-   if not_fruit_choice:
+   if not fruit_choice:
       streamlit.error("Please select a fruit to get information.")
    else:
       fruityvice_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_choice)
